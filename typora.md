@@ -1,4 +1,4 @@
-<u> 下划线</u>
+`<u>` 下划线 `</u>`
 
 # 一级标题
 
@@ -6,54 +6,50 @@
 
 ~~删除线~~
 
-*斜体*
+_斜体_
 
 **加粗**
 
-***斜体加粗***
+**_斜体加粗_**
 
 ==高亮==
 
-* 
-* ss
-* faf 
+-
+- ss
+- faf
 
-1. 
-2.  
-3.  安抚哈佛
-4. 
+1.
+2.
+3. 安抚哈佛
+4.
 
 ```js
-let name = {
-    
-}
+let name = {};
 ```
 
-***
+---
 
 ---
 
 [link 跳转](www.baidu.com)
 
-***
-
 ---
 
 ---
 
-
+---
 
 # CSS
 
-## @import简化页面
+## @import 简化页面
 
-* @import url() all
-* @import url() screen
-* @import utl() print
+- @import url() all
+- @import url() screen
+- @import utl() print
 
-## @media定义局部响应式布局
+## @media 定义局部响应式布局
 
-* @media screen add(max-width:600){
+- @media screen add(max-width:600){
 
   .nav{
 
@@ -61,7 +57,7 @@ let name = {
 
   }
 
-## AND条件判断响应式
+## AND 条件判断响应式
 
 ```js
 //多个media属性合在一起使用
@@ -76,18 +72,16 @@ let name = {
 }
 ```
 
-
-
 ## 兄弟选择器
 
 ```js
 //h1后面的所有h2兄弟元素被选中
 h1~h2{
-    
+
 }或
 //h1后面的紧挨着的h2兄弟元素被选中（只会选中最近的h2）
 h1+h2{
-    
+
 }
 
 ```
@@ -97,20 +91,20 @@ h1+h2{
 ```js
 //选中有title属性的元素
 h1[title]{
-    
+
 }
 //选中title=‘wxx’的元素
 h1[title='wxx']{
-    
+
 }
 
 //通配符选中title含有‘w’的元素
 h1[title*='w']{
-    
+
 }
 //通配符选中title以‘w’开始的元素
 h1[title~='w']{
-    
+
 }
 ```
 
@@ -147,7 +141,7 @@ h2:empty{
 }
 ```
 
-## ::selection选择器
+## ::selection 选择器
 
 ```js
 //“::selection”伪元素是用来匹配突出显示的文本(用鼠标选择文本时的文本)。
@@ -157,8 +151,6 @@ h2:empty{
    color: green;
 }
 ```
-
-
 
 ## 样式权重
 
@@ -226,7 +218,7 @@ h2{
 h2{
     white-space//处理空白的样式
     white-space:nowarp//规定文本不换行
-    
+
 }
 //注意：弹性盒场景下会失效
 文本溢出省略号：
@@ -276,11 +268,11 @@ h2{
 }
 ```
 
-## 表格table
+## 表格 table
 
 ```js
 // th的高度自适应(设置th的vertical-align)
-<table>  
+<table>
 	<tr>
         <th>电压等级</th>
         <td>作业单位作业单位作业单位作业单位作业单位作业单位作业单位</td>
@@ -308,8 +300,6 @@ css:
     }
 ```
 
-
-
 ## 元素显隐
 
 ```js
@@ -326,7 +316,7 @@ h2{
 //fill-available只针对块级盒子
 h2{
     height:fill-available//自动撑满
-    width:max-content//宽度根据内容大小自适 
+    width:max-content//宽度根据内容大小自适
 }
 ```
 
@@ -349,8 +339,6 @@ div{
 }
 
 ```
-
-
 
 ## 背景
 
@@ -427,7 +415,7 @@ h2{
 ```js
 //伪元素清除浮动
 h2{
-    
+
 }
 h2::after{
     content:'';
@@ -436,7 +424,7 @@ h2::after{
 }
 //overflow清除浮动
 h2{
-   overflow:hidden; 
+   overflow:hidden;
 }
 ```
 
@@ -445,7 +433,7 @@ h2{
 ```js
 //注意：滚动条会对定位造成影响
 
- h2{    
+ h2{
      position:relative/absolute/fixed
  }
 
@@ -498,13 +486,11 @@ h2{
 }
 ```
 
-
-
 ## 弹性布局
 
 ```js
 //弹性盒子为块级元素
-//声明 
+//声明
 //注意:需要弄清弹性盒(也叫弹性容器)和弹性元素的概念区别
 h2{
     display:flex/inline-block;//块级弹性盒/行内弹性盒
@@ -516,7 +502,7 @@ h2{
     flex-direction:row/column/row-reverse/column-reverse; //设置弹性元素方向行、列、反向行、反向列
     flex-wrap:wrap/no-wrap/wrap-reverse;//弹性盒溢出换行处理
     flex-flow:row wrap  //flex-direction和flex-wrap简写
-    
+
     justify-content:flex-start/center/flex-end/space-around/space-between/space-evenly //设置主轴的排列方式 space-evenly设置完全平均分布
     align-items:flex-start/flex-end/center/stretch... //设置交叉轴排列方式(flex-wrap不换行时)
     align-content:start/center/end/space-around/space-between... //设置多行元素在交叉轴的排列方式
@@ -529,15 +515,15 @@ h3{
     flex-grow:0;//设置该子元素不分配剩余空间
     flex-shrink:0;//设置元素缩小比例  元素会缩小
     flex-basic:100px;//设置主轴的基准尺寸为100px
-    
+
     //弹性元素属性的组合定义
-    flex:1 2 100px 
-    
+    flex:1 2 100px
+
     order：0/1/2... //控制弹性元素在弹性容器中的排序
-    
+
     //注意：弹性元素设置绝对定位时，因为绝对定位后失去了正常的空间位，将不受弹性盒属性影响
 }
-    
+
 ```
 
 ## 滤镜
@@ -577,15 +563,13 @@ h2::after{
 :root {
   --main-bg-color: coral;
 }
- 
+
 h2 {
   background-color: var(--main-bg-color);
 }
 ```
 
-
-
-## 小于12px文字生成器
+## 小于 12px 文字生成器
 
 ```js
 https://qishaoxuan.github.io/css_tricks/smallFont/
@@ -594,9 +578,7 @@ https://qishaoxuan.github.io/css_tricks/smallFont/
     //2.使用 canvas 无法选中文字（也可以解决，但不如 svg 简洁）
 ```
 
-
-
-## dom监听事件
+## dom 监听事件
 
 ```js
 
@@ -604,24 +586,19 @@ https://qishaoxuan.github.io/css_tricks/smallFont/
 
 [link 详情](https://www.cnblogs.com/summerxbc/p/13865952.html)
 
-## H5新增标签
+## H5 新增标签
 
 ```js
 // 新增标签
-
 ```
 
-
-
-
-
-# ***javascript***
+# **_javascript_**
 
 ## 数据类型
 
 ```js
 //五种基本类型
-//String Number boolean undefined null 
+//String Number boolean undefined null
 
 //其他都为Object
 
@@ -643,90 +620,84 @@ Date Math Array Error Reg
 
 ```
 
-
-
 ## 数组挖掘
 
-* arr1.copyWithin([1,2,3])   数组复制
-* find()   数组查找
-* findIndex() 查找下标
-* includes() 数组查找
-* indexOf() 数组查找
-* lastIndexOf()  从后查找数组索引
-* sort(()=>a-b)   按倒叙排序
-* forEach()  遍历数组，return跳出本次循环，trycatch结束当前循环
-* every() some()  返回boolean
-* filter() 按条件过滤并返回新数组
-* map() 遍历数组并返回新数组
-* reduce((pre,next,index)=>{},[])   ==pre-前一次执行reduce返回的对象，next-本次(将要)执行reduce函数的对象，index当前索引==
-* pop() 删除数组最后一个元素，并返回原数组
-* push() 在数组后面添加元素
-* shift() 删除数组第一个元素，并返回原数组
-*  unshift() 在数组前面添加元素
-*   slice(start,opt_end) 返回新数组，并且不会改变原数组,opt_end可以为负值
-*   splice(index,opt_length，opt_new)  返回新数组，并且修改原数组，opt_new作为第三个参数时可以向原数组添加元素
-*   
-*  
+- arr1.copyWithin([1,2,3]) 数组复制
+- find() 数组查找
+- findIndex() 查找下标
+- includes() 数组查找
+- indexOf() 数组查找
+- lastIndexOf() 从后查找数组索引
+- sort(()=>a-b) 按倒叙排序
+- forEach() 遍历数组，return 跳出本次循环，trycatch 结束当前循环
+- every() some() 返回 boolean
+- filter() 按条件过滤并返回新数组
+- map() 遍历数组并返回新数组
+- reduce((pre,next,index)=>{},[]) ==pre-前一次执行 reduce 返回的对象，next-本次(将要)执行 reduce 函数的对象，index 当前索引==
+- pop() 删除数组最后一个元素，并返回原数组
+- push() 在数组后面添加元素
+- shift() 删除数组第一个元素，并返回原数组
+- unshift() 在数组前面添加元素
+- slice(start,opt_end) 返回新数组，并且不会改变原数组,opt_end 可以为负值
+- splice(index,opt_length，opt_new) 返回新数组，并且修改原数组，opt_new 作为第三个参数时可以向原数组添加元素
+-
+-
 
 ## 清空数组
 
 ```js
-let hd=[1,2]
+let hd = [1, 2];
 //1.
-while(hd.pop()){}
+while (hd.pop()) {}
 //2.
-hd=[]
+hd = [];
 //3
-hd.length=0
+hd.length = 0;
 ```
 
 ## 数组拆分合并
 
 ```js
-let arr = [1,2]
-let hd=[3,4]
+let arr = [1, 2];
+let hd = [3, 4];
 
-arr = arr.concat(hd)//合并
-arr = [...arr,...hd]//合并
-arr.copyWithin(hd)//合并
+arr = arr.concat(hd); //合并
+arr = [...arr, ...hd]; //合并
+arr.copyWithin(hd); //合并
 ```
 
-## 跳出指定for循环
+## 跳出指定 for 循环
 
 ```js
 //为循环语句创建一个label，来标识当前的循环
 outer: for (var i = 0; i < 10; i++) {
-    for (var j = 0; j < 10; j++) {
-        if (j == 5) {
-            break outer;
-        }
-        console.log(j);
+  for (var j = 0; j < 10; j++) {
+    if (j == 5) {
+      break outer;
     }
+    console.log(j);
+  }
 }
 ```
 
-## for in和for of
+## for in 和 for of
 
 ```js
-for(let key in arr){
-    //key-键
+for (let key in arr) {
+  //key-键
 }
-for(let value of arr){
-    //value-值
+for (let value of arr) {
+  //value-值
 }
 ```
-
-
 
 ## slice、substring、substr
 
 ```js
-string.slice(start, end)//提取一个字符串,end支持负数
-string.substring(start, end)//提取一个字符串,end不支持负数
-string.substr(start, len)//提取一个长度为len的字符串
+string.slice(start, end); //提取一个字符串,end支持负数
+string.substring(start, end); //提取一个字符串,end不支持负数
+string.substr(start, len); //提取一个长度为len的字符串
 ```
-
-
 
 ## forEach
 
@@ -758,12 +729,12 @@ try{
 ```js
 //在程序中永远不会重复
 //定义Symbol
-let hd = Symbol('weixiaoxiang')
-console.log(hd.toString()) //weixiaoxiang
-console.log(Symbol.for(hd)) //weixiaoxiang
+let hd = Symbol("weixiaoxiang");
+console.log(hd.toString()); //weixiaoxiang
+console.log(Symbol.for(hd)); //weixiaoxiang
 ```
 
-## Set和Map
+## Set 和 Map
 
 ```js
 //Set 和 Map 主要的应用场景在于 数据重组 和 数据储存
@@ -781,7 +752,7 @@ console.log(Symbol.for(hd)) //weixiaoxiang
     entries()：返回一个包含Set对象中所有元素得键值对迭代器
     forEach(callbackFn, thisArg)：用于对集合成员执行callbackFn操作
 
-    
+
 //Map 本质是键值对的集合，类似与对象集合，通过get 和 set读取数据
 操作方法：
     set(key, value)：向字典中添加新元素
@@ -798,80 +769,59 @@ console.log(Symbol.for(hd)) //weixiaoxiang
 
 ```
 
-
-
-## async和defer
+## async 和 defer
 
 ```js
-async //允许异步script文件
-defer //也允许异步加载script文件
+async; //允许异步script文件
+defer; //也允许异步加载script文件
 ```
-
-
 
 ## 对象
 
- * Object.getOwnPropertyDescriptor(object1, 'property1') 获得对象属性
+- Object.getOwnPropertyDescriptor(object1, 'property1') 获得对象属性
 
-   ```	js
-   {
-   configurable:true,//是否可以删除`
-   enumerable:true,//是否可以枚举`
-   value:'',//值`
-   writeable:true//是否可以修改`
-   }
-   ```
-   
- * delete obj.name 删除对象name属性
+  ```js
+  {
+  configurable:true,//是否可以删除`
+  enumerable:true,//是否可以枚举`
+  value:'',//值`
+  writeable:true//是否可以修改`
+  }
+  ```
 
- * Object.hasOwnProperty() 判断对象是否包含特定的自身（非继承）属性
+- delete obj.name 删除对象 name 属性
+- Object.hasOwnProperty() 判断对象是否包含特定的自身（非继承）属性
+-
 
- * 
+## 探索 js 中函数的秘密
 
-   
-
-   
-
-
-
-
-
-
-
-## 探索js中函数的秘密
-
-* call()  传参数  可以改变函数中this的指向 立即执行
-* apply()  传数组 可以改变函数中this的指向 立即执行
-* bind()   传参数 不立即执行
-* call() bind() apply() 可以用于构造函数的继承
+- call() 传参数 可以改变函数中 this 的指向 立即执行
+- apply() 传数组 可以改变函数中 this 的指向 立即执行
+- bind() 传参数 不立即执行
+- call() bind() apply() 可以用于构造函数的继承
 
 ## 同步异步
 
-* process.nexTick() setImmediate
-* 同步任务>process.nexTick()>微任务>宏任务>setImmmediate() 当前事件任务循环
-* async函数返回值是promise对象
+- process.nexTick() setImmediate
+- 同步任务>process.nexTick()>微任务>宏任务>setImmmediate() 当前事件任务循环
+- async 函数返回值是 promise 对象
 
 ## 闭包
 
 定义：函数嵌套函数，内部函数就是闭包
 
-* 作用域链(重点理解):向上查找当前需要的变量或函数
+- 作用域链(重点理解):向上查找当前需要的变量或函数
 
 利用闭包实现模块化开发，便于管理
 
 ## 堆栈内存概念
 
-
-
 ![](https://s3.bmp.ovh/imgs/2022/06/06/133fc2da11344f4f.png)
 
-* 基本(原始)类型存在栈内存中，栈stack为自动分配的内存空间，它由系统自动释放；
+- 基本(原始)类型存在栈内存中，栈 stack 为自动分配的内存空间，它由系统自动释放；
+- 引用类型存在堆内存中， 堆 heap 是动态分配的内存，大小不定也不会自动释放。
 
-* 引用类型存在堆内存中， 堆heap是动态分配的内存，大小不定也不会自动释放。
-
-
-
-## 立即执行a函数
+## 立即执行 a 函数
 
 ```js
 //立即执行函数：函数定义完，立即被调用，这种函数叫做立即执行函数，立即执行函数往往只会执行一次
@@ -880,9 +830,8 @@ defer //也允许异步加载script文件
 
 ## 防抖和节流
 
-* debounce ：只执行最后一次
-
-* throttle ：控制执行次数
+- debounce ：只执行最后一次
+- throttle ：控制执行次数
 
 ## 客户端渲染和服务端渲染
 
@@ -895,46 +844,45 @@ Vue.js构建的应用程序，默认情况下是有一个html模板页，然后�
 用户输入url访问页面 -> 服务端接收到请求 -> 将对应请求的数据渲染完一个网页 -> 返回给用户
 ```
 
-
-
 ## toString()
 
-* 当对undefined、null使用tostring(),会报错
+- 当对 undefined、null 使用 tostring(),会报错
 
 ![](https://s3.bmp.ovh/imgs/2022/06/06/a94e3e6fbfe48c05.png)
 
 ## 原型对象
 
-*  每个对象都有其原型对象`__proto__`
-
-* 构造函数 prototype属性
-
-* 基于原型的继承
+- 每个对象都有其原型对象 `__proto__`
+- 构造函数 prototype 属性
+- 基于原型的继承
 
   ```js
-  function User(name){
-      this.name = name
-      this.login = function(){console.log('我登陆了')}
+  function User(name) {
+    this.name = name;
+    this.login = function () {
+      console.log("我登陆了");
+    };
   }
-  function Admin(name){
-      this.name = name
+  function Admin(name) {
+    this.name = name;
   }
   //让Admin的原型指向User的实例，实现Admin继承User
-  Admin.prototype = new User()
+  Admin.prototype = new User();
   ```
 
-* ==原型链==
+- ==原型链==
 
   ```js
-  
+
   ```
-```
-  
-  
+
+````
+
+
 
 ## 类class
 
-​```js
+```js
 class Cat{
 
     constructor(name.age){
@@ -942,22 +890,21 @@ class Cat{
     }
 
 }
-```
+````
 
-* 类的继承
+- 类的继承
 
   ```js
   class Admin extend User{
-     static xx = '' //静态属性 
+     static xx = '' //静态属性
      constructor(name,age){
   		super()
-      } 
+      }
      login(){
-         
-     } 
+
+     }
   }
   ```
-  
 
 ## JIT-即时编译
 
@@ -965,7 +912,7 @@ class Cat{
 JavaScript是一门解释型语言，使用了JIT技术，使得运行速度得到改善
 ```
 
-## js预编译
+## js 预编译
 
 ```js
 //https://www.bilibili.com/video/BV1sN411974w?p=6
@@ -973,9 +920,7 @@ JavaScript是一门解释型语言，使用了JIT技术，使得运行速度得�
 
 ![](https://s3.bmp.ovh/imgs/2022/06/06/9eee364153b5b4a5.png)
 
-
-
-## lodashJS库使用
+## lodashJS 库使用
 
 ```js
 //https://blog.csdn.net/weixin_41229588/article/details/106334552
@@ -1011,7 +956,7 @@ Object.defineProperty(obj,'age',{
 })
 ```
 
-## Worker实现js多线程
+## Worker 实现 js 多线程
 
 ```
 new Worker() 开辟出一个子线程，只能下载网络文件，不能读取本地文件
@@ -1041,11 +986,11 @@ let d: any;
 // unknown表示未知类型,实际就是有类型安全性的any
 let e: unknown;
 let s = e as string;
-let ss = <string>e; 
+let ss = <string>e;
 
 // void 用来表示函数没有返回值
 function fn(): void{
-    
+
 }
 
 // never 用来表示函数永远不会返回结果
@@ -1100,39 +1045,39 @@ abstract class Animal{
    constructor(name: string){
        this.name = name;
    }
-  // abstract定义抽象方法，抽象方法只能定义在抽象类中，并且子类必须实现该方法 
+  // abstract定义抽象方法，抽象方法只能定义在抽象类中，并且子类必须实现该方法
    abstract sayHello(): void
 }
-   
+
 class Cat extends Animal{
     // 子类必须实现父类的抽象方法
     sayHello(){
         console.log('hello')
     }
-} 
+}
 ```
 
 ## 接口
 
 ```js
 // interface定义 类的结构
-interface obj{
-    name: string;
-    age: number
+interface obj {
+  name: string;
+  age: number;
 }
 
-interface myInter{
-    name: string;
-    sayHello(): void;
+interface myInter {
+  name: string;
+  sayHello(): void;
 }
-class MyClass implements myInter{
-    name: string;
-    constructor(name: string){
-        this.name = name;
-    }
-	sayHello(){
-        console.log('hello')
-    }
+class MyClass implements myInter {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+  sayHello() {
+    console.log("hello");
+  }
 }
 ```
 
@@ -1162,23 +1107,17 @@ class MyClass{
 // protected 定义保护属性，该属性可以在当前类和子类中被访问
 ```
 
-
-
-
-
-
-
 # vue
 
 ## $.set()、Vue.set()
 
 ```js
 //向vue实例动态添加响应式数据,
-this.$set(this.user,'sex','男')//this指vue实例vm
-Vue.set(this.user,'sex','男')//
+this.$set(this.user, "sex", "男"); //this指vue实例vm
+Vue.set(this.user, "sex", "男"); //
 
 //set(target,key,value),target不能是this(vm)本身
-Vue.set(this,'sex','男') //错误，key不能是Vue实例的根数据对象
+Vue.set(this, "sex", "男"); //错误，key不能是Vue实例的根数据对象
 ```
 
 ## 监视数组变更原理
@@ -1186,20 +1125,20 @@ Vue.set(this,'sex','男') //错误，key不能是Vue实例的根数据对象
 ```js
 //vue将被侦听的数组的变更方法进行了包裹
 //vue的响应式只能监听数组通过push、pop、reverse、shift、unshfit等方法操作后的变化
-arr.splice(0,0,'w') //页面发生响应式
+arr.splice(0, 0, "w"); //页面发生响应式
 //通过直接操作数组索引修改元素的，vue响应式不发生变化
-arr[0]='w' //页面不发生响应式
+arr[0] = "w"; //页面不发生响应式
 ```
 
-## v-model修饰符
+## v-model 修饰符
 
 ```js
-v-model.number //强制类型转换
-v-model.lazy  //懒\响应，当失去焦点时响应
-v-model.trim  //去除首尾空字串
+v - model.number; //强制类型转换
+v - model.lazy; //懒\响应，当失去焦点时响应
+v - model.trim; //去除首尾空字串
 ```
 
-## v-on修饰符
+## v-on 修饰符
 
 ```js
 <!-- 阻止单击事件继续传播 -->
@@ -1227,15 +1166,13 @@ v-model.trim  //去除首尾空字串
 
 ```
 
-
-
 ## 过滤器
 
 ```js
 // 过滤器可以连用 比如同时使用timeFormat myslice
 {{time | timeFormat | myslice}}
 filters:{
-   //opt_param 可选参数  
+   //opt_param 可选参数
    timeFormat(value,opt_param){
         return 'YYYY-MM-DD'
    },
@@ -1248,7 +1185,7 @@ filters:{
 ## v-text
 
 ```js
-不建议使用
+不建议使用;
 ```
 
 ## v-html
@@ -1269,7 +1206,7 @@ filters:{
 ## v-once
 
 ```js
-<h2 v-once>{{count}}</h2>
+<h2 v-once>{{ count }}</h2>
 //v-once所在节点在初次动态渲染后就视为静态内容了
 //以后数据的改变不会引起v-once所在节点的更新
 ```
@@ -1284,11 +1221,9 @@ filters:{
 ## @keyup.enter
 
 ```js
-//enter抬起时触发  
+//enter抬起时触发
 //@keyup 主要针对表单元素
 ```
-
-
 
 ## 自定义指令
 
@@ -1301,11 +1236,11 @@ directives:{
     fbig:{
         //指令与页面成功绑定时
         bind(element,binding){},
-        //指令所在元素被插入页面时   
+        //指令所在元素被插入页面时
         inserted(element,binding){}，
         //指令所在的模块被重新解析时
         update(element,binding){
-         
+
      }
 }
 ```
@@ -1318,7 +1253,7 @@ beforeCreate(){}
 created(){}
 beforeMount(){}  //vue挂在dom前
 //vue完成模块的解析并把初始的DOM元素放入页面后（挂载完毕）后执行，只会走一次
-mounted(){} 
+mounted(){}
 beforeUpdate(){} //更新前
 updated(){}   //更新时
 beforeDestroy(){}  //销毁前
@@ -1327,8 +1262,6 @@ destroyed(){}  //销毁时
 
 
 ```
-
-
 
 ## 创建非单文件组件
 
@@ -1345,7 +1278,7 @@ let user = Vue.entend({
         age:18,
     },
 })
-    
+
 
 ```
 
@@ -1361,7 +1294,7 @@ components:{
 Vue.component('user',user)
 ```
 
-## @click传参当前DOM元素
+## @click 传参当前 DOM 元素
 
 ```js
 //$event 当前的DOM元素
@@ -1375,36 +1308,35 @@ Vue.component('user',user)
 <h1 ref="title"></h1>
 <School ref="school" />
 
-console.log(this.$refs.title) //DOM对象
-console.log(this.$refs.school) //School组件实例对象
+console.log(this.$refs.title) //DOM对象 console.log(this.$refs.school) //School组件实例对象
 ```
 
-## props配置项
+## props 配置项
 
 ```js
-export default{
-	//
- 	props:['name','age'],
-	//对接收的数据进行类型限制
-    props:{
-        name:String,
-        age:Number,
+export default {
+  //
+  props: ["name", "age"],
+  //对接收的数据进行类型限制
+  props: {
+    name: String,
+    age: Number,
+  },
+  props: {
+    name: {
+      type: String,
+      required: true, //必需值
     },
-    props:{
-        name:{
-            type:String,
-            required:true //必需值
-        },
-        age:{
-            type:Number,
-            default:99 //设置默认值
-        }
-    }
-}
+    age: {
+      type: Number,
+      default: 99, //设置默认值
+    },
+  },
+};
 //props接受父组件传过来的值，并且不可以进行修改
 ```
 
-## mixin混合
+## mixin 混合
 
 ```js
 //mixin混合:将可以复用的配置项提取成混合对象（_mixin）,当前组件和混合配置项重复的配置项，优先使用当前组件的配置项 ，如示例中优先使用 x=999,
@@ -1432,7 +1364,7 @@ export default{
     data(){
        return {
            x:999
-       } 
+       }
     },
     mixins:[_mixin],//在组件中使用混合
 }
@@ -1448,9 +1380,7 @@ Vue.mixin(_mixin)
 <Student @getName="getName"></Student>
 ```
 
-
-
-## 组件绑定原生事件click
+## 组件绑定原生事件 click
 
 ```js
 //通过native 为Student组件绑定原生的click事件
@@ -1460,14 +1390,14 @@ Vue.mixin(_mixin)
 ## 解除绑定事件
 
 ```js
-this.$off('getData') //解除getData绑定事件
-this.$off() //解除所有的自定义事件
+this.$off("getData"); //解除getData绑定事件
+this.$off(); //解除所有的自定义事件
 ```
 
 ## 销毁组件
 
 ```js
-this.$destroy() //销毁当前组件
+this.$destroy(); //销毁当前组件
 ```
 
 ## 全局事件总线
@@ -1493,19 +1423,17 @@ mounted(){
 this.$bus.$emit('xxx',this.demo) //this.demo:要提供的数据，就是参数
 ```
 
-## pubsub-js订阅发布消息
+## pubsub-js 订阅发布消息
 
 ```js
 //发布消息
-PubSub.publish('hello', 'hello world!');
-
+PubSub.publish("hello", "hello world!");
 
 //订阅消息
 var mySubscriber = function (msg, data) {
-    console.log( msg, data ); //hello, hello world!
+  console.log(msg, data); //hello, hello world!
 };
-var token = PubSub.subscribe('hello', mySubscriber);
-
+var token = PubSub.subscribe("hello", mySubscriber);
 
 //组件销毁时销毁订阅
 PubSub.unsubscribe(token);
@@ -1515,9 +1443,9 @@ PubSub.unsubscribe(token);
 
 ```js
 //在下一次轮次执行回调函数
-this.$nextTick(()=>{
-    alert('xx')
-})
+this.$nextTick(() => {
+  alert("xx");
+});
 ```
 
 ## 过渡动画
@@ -1533,13 +1461,13 @@ this.$nextTick(()=>{
 </transition-group>
 ```
 
-## vue使用插件
+## vue 使用插件
 
 ```js
-Vue.use(XXX) // 
+Vue.use(XXX); //
 ```
 
-## slot插槽
+## slot 插槽
 
 ```js
 //1.定义默认插槽，由组件的使用者进行填充
@@ -1584,14 +1512,14 @@ data(){
 
 ```js
 //router-link 最终转化为a标签
-<router-link active-class="xxx" to="/home">home</router-link>
+<router-link active-class="xxx" to="/home">
+  home
+</router-link>
 ```
 
-# uniapp学习
+# uniapp 学习
 
-
-
-# GIS学习
+# GIS 学习
 
 ## WFS
 
@@ -1601,7 +1529,7 @@ data(){
     只要服务器和客户端遵循统一规范，那么服务器与客户端传送的数据可以是任意格式的。为了规范通过Web服务发送矢量数据的过程，OGC制定了WFS规范。
 ```
 
-## WFS与WMS区别
+## WFS 与 WMS 区别
 
 ```js
 WMS是由服务器将一地图图像发送给客户端，而WFS是服务器将矢量数据发送给客户端
@@ -1609,9 +1537,7 @@ WMS是由服务器将一地图图像发送给客户端，而WFS是服务器将�
 ==也就是在使用WMS时地图由服务器绘制，在使用WFS时地图由客户端绘制。==
 ```
 
-
-
-## WMTS和WMS区别
+## WMTS 和 WMS 区别
 
 ```js
 // WMTS
@@ -1623,43 +1549,38 @@ Web Map Service，网络地图服务，它是利用具有地理空间位置信�
 
 ```
 
-
-
-## ol添加非默认控件
+## ol 添加非默认控件
 
 ```js
-var map = 
-    new ol.Map({
-            //将DragRotateAndZoom控件添加到地图
-            interactions: ol.interaction.defaults().extend([      
-                new ol.interaction.DragRotateAndZoom()
-            ]),
-            layers: [
-                new ol.layer.Tile({
-                    source: new ol.source.OSM()
-                })
-            ],
-            target: 'map',
-            view: new ol.View({
-                center: [0, 0],
-                zoom: 2
-            })
-        });
+var map = new ol.Map({
+  //将DragRotateAndZoom控件添加到地图
+  interactions: ol.interaction.defaults().extend([new ol.interaction.DragRotateAndZoom()]),
+  layers: [
+    new ol.layer.Tile({
+      source: new ol.source.OSM(),
+    }),
+  ],
+  target: "map",
+  view: new ol.View({
+    center: [0, 0],
+    zoom: 2,
+  }),
+});
 ```
 
-## ol中DOM元素的组织关系
+## ol 中 DOM 元素的组织关系
 
 如图：
 
 ![](https://s3.bmp.ovh/imgs/2022/06/06/b0191367a918d128.png)
 
     当调用ol.Map()这个构造函数时，OpenLayers地图引擎会在内部创建一个视口容器（viewport container，一个css类名为ol-viewport的div DOM元素）并将其放置在target属性映射的地图容器元素中。
-    
+
     而在视口容器中将会包含三个子元素：
     canvas元素   --    用于渲染地图
-    
+
     css类名为ol-overlaycontainer-stopevent的div元素    ——    用于承载控件（control）和stopEvent属性设置为true的叠置层（overlay)，此处的DOM元素事件不冒泡
-    
+
     css类名为ol-overlaycontainer    ——    用于承载stopEvent属性设置为false的叠置层，此处的DOM元素事件会冒泡
     所以上面示例中用于充当叠置层的html元素都会被移到用于承载叠置层的div元素中。
 
@@ -1671,27 +1592,27 @@ var map =
 
 ```js
 //xxx 一般为3dtidle和model等实体对象
-viewer.flyto(xxx)
+viewer.flyto(xxx);
 
 //xxx 一般为明确的坐标地点destination，还需要设置orientation方位角
-camera.flyto(xxx)
+camera.flyto(xxx);
 ```
 
 ### clampToHeight
 
 ```js
 //返回cartesian位置处objectsToExclude上的夹紧位置，即紧贴实体的位置
-clampToHeight(cartesian, objectsToExclude)//objectsToExclude 一般为实体或3DTiles
+clampToHeight(cartesian, objectsToExclude); //objectsToExclude 一般为实体或3DTiles
 ```
 
 ### sampleTerrainMostDetailed、sampleTerrain
 
 ```js
 //在terrain数据集的最大可用图块级别上获得高程
-Cesium.sampleTerrainMostDetailed(terrainProvider, positions)
+Cesium.sampleTerrainMostDetailed(terrainProvider, positions);
 
 //在terrain数据集的level级别上获得高程
-Cesium.sampleTerrain(terrainProvider, level, positions)
+Cesium.sampleTerrain(terrainProvider, level, positions);
 ```
 
 ## 项目实战
@@ -1712,7 +1633,7 @@ Cesium.sampleTerrain(terrainProvider, level, positions)
 
 # webgl
 
-## model、view矩阵分析
+## model、view 矩阵分析
 
 ```js
 //https://zhuanlan.zhihu.com/p/34672417
@@ -1726,13 +1647,7 @@ Cesium.sampleTerrain(terrainProvider, level, positions)
 
 ![](https://s3.bmp.ovh/imgs/2022/06/06/22dc8cb77e421385.png)
 
-
-
-
-
-
-
-# GIT基本使用
+# GIT 基本使用
 
 ## 解决冲突
 
@@ -1750,26 +1665,30 @@ Cesium.sampleTerrain(terrainProvider, level, positions)
 
 ```
 
-## TortoiesGit的使用
+## TortoiesGit 的使用
 
 ```js
 1.https://backlog.com/git-tutorial/cn/intro/intro1_2.html
 2.https://blog.csdn.net/u011966339/article/details/106250920
 ```
 
-
-
 # 软知识
 
-## 插件和SDK的区别
+## 插件和 SDK 的区别
 
 ```js
 //以cesium为例
 插件：就是自己基于cesium的某个部分（比如Layer或者entity）做的二次开发。最终项目里面不包括cesium源码，他的运行和使用需要自己导入cesium作为依赖。
 
 SDK：也是基于cesium做的维持开发，但最终项目包括了自己开发的代码和cesium的源码以及其他依赖插件和环境等。
-
 ```
 
+## 常用工具集合
+
+```js
+1.popmotion.js  取代锚点定位的好工具，滚动到指定区域。
+2.
+3.
 
 
+```
