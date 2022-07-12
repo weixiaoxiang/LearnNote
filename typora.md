@@ -1578,15 +1578,18 @@ var map = new ol.Map({
 
 ![](https://s3.bmp.ovh/imgs/2022/06/06/b0191367a918d128.png)
 
-    当调用ol.Map()这个构造函数时，OpenLayers地图引擎会在内部创建一个视口容器（viewport container，一个css类名为ol-viewport的div DOM元素）并将其放置在target属性映射的地图容器元素中。
+```js
+当调用ol.Map()这个构造函数时，OpenLayers地图引擎会在内部创建一个视口容器（viewport container，一个css类名为ol-viewport的div DOM元素）
+并将其放置在target属性映射的地图容器元素中。
 
-    而在视口容器中将会包含三个子元素：
+而在视口容器中将会包含三个子元素：
     canvas元素   --    用于渲染地图
 
-    css类名为ol-overlaycontainer-stopevent的div元素    ——    用于承载控件（control）和stopEvent属性设置为true的叠置层（overlay)，此处的DOM元素事件不冒泡
+    css类名为ol-overlaycontainer-stopevent的div元素 —— 用于承载控件（control）和stopEvent属性设置为true的叠置层（overlay)，此处的DOM元素事           件不冒泡
 
-    css类名为ol-overlaycontainer    ——    用于承载stopEvent属性设置为false的叠置层，此处的DOM元素事件会冒泡
+    css类名为ol-overlaycontainer —— 用于承载stopEvent属性设置为false的叠置层，此处的DOM元素事件会冒泡
     所以上面示例中用于充当叠置层的html元素都会被移到用于承载叠置层的div元素中。
+```
 
 ![img](https://s3.bmp.ovh/imgs/2022/06/06/f383289fac0bd217.png)
 
