@@ -1,6 +1,6 @@
 `<u>` 下划线 `</u>`
 
-# 一级标题
+一级标题
 
 ## 二级标题
 
@@ -1519,6 +1519,10 @@ data(){
 
 # uniapp 学习
 
+```js
+// 类vue语法
+```
+
 # GIS 学习
 
 ## WFS
@@ -1584,11 +1588,59 @@ var map = new ol.Map({
     css类名为ol-overlaycontainer    ——    用于承载stopEvent属性设置为false的叠置层，此处的DOM元素事件会冒泡
     所以上面示例中用于充当叠置层的html元素都会被移到用于承载叠置层的div元素中。
 
-![](https://s3.bmp.ovh/imgs/2022/06/06/f383289fac0bd217.png)
+![img](https://s3.bmp.ovh/imgs/2022/06/06/f383289fac0bd217.png)
 
-## cesium
+# cesium
 
-### flyto
+## 投影支持
+
+```js
+Cesium只支持WCS84和墨卡托投影；
+其中地形默认为WCS84投影，且一般只支持WCS84投影；
+影像数据两种投影都支持，默认为墨卡托投影，WebMercatorTilingScheme平铺方案
+如果影像数据为墨卡托投影，则cesium内部会自动进行动态投影矫正，会有一定的计算量，但是不需要额外进行代码编写；
+当影像数据为WCS84时，需要手动申明该ImageryProvider的TilingScheme=new Cesium.GeographicTilingScheme()
+```
+
+## 主要类及方法总结
+
+```js
+
+
+js:
+1.Cesium.Matrix4.IDENTITY 一个常量，代表单位矩阵，任何矩阵*单位矩阵=本身
+2.viewer.entities.removeAll() 删除viewer上所有的实体entity
+3.HeadingPitchRoll 设置对象的水平方向、俯仰角度和翻滚角度
+4.scene.clampToHeightSupported 判断计算机是否支持根据模型或者地形等物体计算点位的附着高度
+5.Cesium.Cartesian3.lerp(a,b,c) a~b之间线性计算出在c处的值
+6.scene.clampToHeightMostDetailed(cartesians)  在cartesians坐标处计算出对应的附着高度，可能是附着在地形、entity、primitives、3dtiles等上
+7.scene.camera.setView 设置相机的位置、方向和变换矩阵
+8.PolylineOutlineMaterialProperty 用来描述线轮廓的材质
+9.PolylineGraphics.depthFailMaterial 用于指定线被深度检测盖住的部分的材质
+10.设置viewer.sceneMode和viewer.mapMode2D可以使用2D和2.5地图。
+11.viewer.resolutionScale 设置cesium的呈现分辨率的缩放系数
+12.d=Cesium.Math.clamp(a,b,c) 用于将c值限定在a~b之间，当c<a时，d=a当c>b时，d=b;否则d=c
+13.Cesium.Color.fromCssColorString() 将CSS颜色值转化为Cesium.Color
+14.Cesium.ClassificationType 设置对象是否影响地形，3dtiles或两者。
+15.viewer.projectionPick 设置相机的投影方式（正射投影或者透视投影），透视投影更符合人类眼睛的观察模式
+16.viewer.projectionPicker.viewModel.switchToPerspective() 手动设置相机切换到透视投影
+17.Cesium.Transforms.headingPitchRollQuaternion() 根据提供的原点为中心，进行欧拉角计算，得到一个新的四元数，在设置entity的坐标和方向时用到
+18.viewer.trackedEntity=entity 设置相机跟踪当前entity
+19.PostProcessStageLibrary 常见的后处理函数
+20.Cesium.Cartesian3.fromDegreesArray()
+   Cesium.Cartesian3.fromDegreesArrayHeights
+21.PolylineDashMaterialProperty 定义虚线材质
+22.PolylineGlowMaterialProperty 定义发光线材质
+
+
+
+
+
+
+
+```
+
+## flyto
 
 ```js
 //xxx 一般为3dtidle和model等实体对象
@@ -1598,14 +1650,14 @@ viewer.flyto(xxx);
 camera.flyto(xxx);
 ```
 
-### clampToHeight
+## clampToHeight
 
 ```js
 //返回cartesian位置处objectsToExclude上的夹紧位置，即紧贴实体的位置
 clampToHeight(cartesian, objectsToExclude); //objectsToExclude 一般为实体或3DTiles
 ```
 
-### sampleTerrainMostDetailed、sampleTerrain
+## sampleTerrainMostDetailed、sampleTerrain
 
 ```js
 //在terrain数据集的最大可用图块级别上获得高程
