@@ -1608,8 +1608,6 @@ Cesium只支持WCS84和墨卡托投影；
 ## 主要类及方法总结
 
 ```js
-
-
 js:
 1.Cesium.Matrix4.IDENTITY 一个常量，代表单位矩阵，任何矩阵*单位矩阵=本身
 2.viewer.entities.removeAll() 删除viewer上所有的实体entity
@@ -1634,10 +1632,16 @@ js:
    Cesium.Cartesian3.fromDegreesArrayHeights
 21.PolylineDashMaterialProperty 定义虚线材质
 22.PolylineGlowMaterialProperty 定义发光线材质
-
-
-
-
+23.PolylineArrowMaterialProperty 定义线箭头材质
+24.cornerType: Cesium.CornerType.BEVELED 设置图形拐角处的连接类型
+25.ploygon.perPositionHeight 设置polygon是否使用每个位置的高度，仅当extrudedHeight=0时，设置ploygon.perPositionHeight=true才生效
+26.polygon 可以构造多边形以及多边形体，灵活应用extrudedHeight和perPositionHeight
+27.viewer.entities.add() 添加实体
+28.viewer.zoomTo()
+29.世界坐标转化经纬度：
+   	cartographic = Cesium.Cartographic.fromCartesian(cartesian)
+	lon = Cesium.Math.toDegrees(cartographic.longitude)
+	lat = Cesium.Math.toDegrees(cartographic.latitude)
 
 
 
@@ -1742,8 +1746,8 @@ SDK：也是基于cesium做的维持开发，但最终项目包括了自己开�
 
 ```js
 1.popmotion.js  取代锚点定位的好工具，滚动到指定区域。
-2.
-3.
+2.https://shields.io/category/social 获得github项目实时的星星数
+3.vxe-table 强大的vue表格插件
 
 
 ```
