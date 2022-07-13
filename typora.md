@@ -1747,7 +1747,7 @@ SDK：也是基于cesium做的维持开发，但最终项目包括了自己开�
 ```js
 1.popmotion.js  取代锚点定位的好工具，滚动到指定区域。
 2.https://shields.io/category/social 获得github项目实时的星星数
-3.vxe-table 强大的vue表格插件
+3.vxe-table 强大的vue 表格插件
 
 
 ```
