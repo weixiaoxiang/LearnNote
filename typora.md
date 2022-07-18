@@ -270,6 +270,8 @@ h2{
 
 ## 表格 table
 
+![](https://s3.bmp.ovh/imgs/2022/07/14/443be4a36cddc51d.png)
+
 ```js
 // th的高度自适应(设置th的vertical-align)
 <table>
@@ -882,7 +884,7 @@ Vue.js构建的应用程序，默认情况下是有一个html模板页，然后�
 
 ## 类class
 
-```js
+​```js
 class Cat{
 
     constructor(name.age){
@@ -1616,6 +1618,7 @@ js:
 5.Cesium.Cartesian3.lerp(a,b,c) a~b之间线性计算出在c处的值
 6.scene.clampToHeightMostDetailed(cartesians)  在cartesians坐标处计算出对应的附着高度，可能是附着在地形、entity、primitives、3dtiles等上
 7.scene.camera.setView 设置相机的位置、方向和变换矩阵
+  scene.camera.lookAt() 
 8.PolylineOutlineMaterialProperty 用来描述线轮廓的材质
 9.PolylineGraphics.depthFailMaterial 用于指定线被深度检测盖住的部分的材质
 10.设置viewer.sceneMode和viewer.mapMode2D可以使用2D和2.5地图。
@@ -1642,9 +1645,16 @@ js:
    	cartographic = Cesium.Cartographic.fromCartesian(cartesian)
 	lon = Cesium.Math.toDegrees(cartographic.longitude)
 	lat = Cesium.Math.toDegrees(cartographic.latitude)
-
-
-
+30.Cesium.Color.clone() 颜色拷贝
+31.Cesium.Color.GREEN.withAlpha(0.5) 带透明度的颜色
+32.handler = new Cesium.ScreenSpaceEventHandler(scene.canvas) 定义用户输入事件
+   handler.setInputAction(fn,type, modifier) 开启type类型输入事件，并设置执行的功能函数 
+   handler.destroy() 销毁用户输入事件监听
+33.scene.drillPick(movement.endPosition) 根据屏幕坐标深度捕捉图元对象，获得一个对象数组
+34.viewer.scene.camera.pickEllipsoid(cartesian2) 根据屏幕坐标计算世界坐标
+35.Cesium.Cartesian3.distance(a,b) 计算ab两点间的距离
+36.viewer.camera.changed.addEventListener(fn) 开启相机事件监听
+   viewer.camera.percentageChanged = 0.1 让相机变得更加灵敏
 ```
 
 ## flyto
