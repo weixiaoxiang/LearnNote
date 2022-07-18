@@ -1655,7 +1655,7 @@ js:
 35.Cesium.Cartesian3.distance(a,b) 计算ab两点间的距离
 36.viewer.camera.changed.addEventListener(fn) 开启相机事件监听
    viewer.camera.percentageChanged = 0.1 让相机变得更加灵敏
-37.viewer.scene.cartesianToCanvasCoordinates(cartesia3,cartesia2) 将世界坐标映射为屏幕坐标 
+37.viewer.scene.cartesianToCanvasCoordinates(cartesia3,cartesia2) 将世界坐标映射为屏幕坐标
 ```
 
 ## flyto
