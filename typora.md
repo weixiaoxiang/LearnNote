@@ -1696,7 +1696,7 @@ js:
    Rectangle 构造矩形，可以挤压成体积
    Wall 构造二维墙体
 39.Cesium.HeightReference 设置相对于地形的位置
-40.viewer.dataSources.raise(dataSource) 将 dataSource的显示z-index上升一位
+40.viewer.dataSources.raise(dataSource) 将 dataSource的显示z-index上升一位 
 ```
 
 ## flyto
