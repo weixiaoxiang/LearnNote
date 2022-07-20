@@ -1,29 +1,26 @@
 `<u>` 下划线 `</u>`
 
-一级标题
+# 一级标题
 
 ## 二级标题
 
 ~~删除线~~
-
 _斜体_
 
 **加粗**
 
 **_斜体加粗_**
 
-==高亮==
-
--
+- 11
 - ss
 - faf
 
-1.
-2.
+1. 哈
+2. 哈哈
 3. 安抚哈佛
-4.
 
 ```js
+// 代码段
 let name = {};
 ```
 
@@ -685,13 +682,38 @@ outer: for (var i = 0; i < 10; i++) {
 ## for in 和 for of
 
 ```js
+// for of只能遍历可迭代的变量，所以对对象不可以使用for of
 for (let key in arr) {
   //key-键
 }
+for (let key in obj) {
+  //key-键
+}
+// 不可遍历对象obj
 for (let value of arr) {
   //value-值
 }
 ```
+
+## Object.entries()
+
+```js
+//Object.entries()方法返回一个给定对象自身可枚举属性的键值对数组，其排列与使用for…in循环遍历该对象时返回的顺序一致。
+//区别在于forin 会枚举原型链上的属性。  
+let per = {
+    name:'zdx',
+    age: 18
+  }
+
+  for(let [key,value] of Object.entries(per)){
+    console.log(key,value);
+  }
+  //name,zdx
+  //age,18
+
+```
+
+
 
 ## slice、substring、substr
 
@@ -1656,6 +1678,25 @@ js:
 36.viewer.camera.changed.addEventListener(fn) 开启相机事件监听
    viewer.camera.percentageChanged = 0.1 让相机变得更加灵敏
 37.viewer.scene.cartesianToCanvasCoordinates(cartesia3,cartesia2) 将世界坐标映射为屏幕坐标
+38.关于entity中graphics的分类：
+   billboard 广告牌
+   box 构造立方体，中心位置和方向由包含的 Entity 确定
+   Corridor 构造走廊，可以挤压成体积
+   Cylinder 构造圆柱体、截锥体或者圆锥体，中心位置和方向由包含的 Entity 确定
+   Ellipse 构造由长短轴定义的椭圆，可以挤压成体积,中心位置和方向由包含的 Entity 确定
+   Ellipsoid 构造椭球体或者球体,中心位置和方向由包含的 Entity 确定
+   Label 构造二维标签,中心位置和方向由包含的 Entity 确定
+   model 构造基于gltf的模型,中心位置和方向由包含的 Entity 确定
+   path 构造entity随时间移动时形成的路径的折线
+   plane 构造只有长宽的平面，需要设置其法线属性
+   point 构造图形点
+   polygon 构造外部形状和任何嵌套孔的线性环的层次结构定义的多边形，可以挤压体积
+   polyline 构造线段
+   PolylineVolume 构造折线体积，管线等...
+   Rectangle 构造矩形，可以挤压成体积
+   Wall 构造二维墙体
+39.Cesium.HeightReference 设置相对于地形的位置
+40.viewer.dataSources.raise(dataSource) 将 dataSource的显示z-index上升一位
 ```
 
 ## flyto
