@@ -1541,6 +1541,15 @@ data(){
 </router-link>
 ```
 
+# vue3学习
+
+```js
+// 基于setup语法糖的常用语法
+
+```
+
+
+
 # uniapp 学习
 
 ```js
