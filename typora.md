@@ -998,6 +998,49 @@ Object.defineProperty(obj,'age',{
 new Worker() 开辟出一个子线程，只能下载网络文件，不能读取本地文件
 ```
 
+## Promise
+
+```js
+// 在promise中定义好异步
+cancel() {
+      // promise
+      return Promise.resolve(
+        new Promise((resolve) => {
+          setTimeout(() => {
+            ....
+            console.log(1)
+            resolve();
+          }, 0);
+        })
+      );
+},
+// 在fn中同步使用
+async fn(){
+    await this.cancel()
+    console.log(2)
+}    
+打印结果：先1后2，同步执行异步函数
+
+
+
+```
+
+
+
+## 其他
+
+```js
+1.history.scrollRestoration 取消浏览器对页面滚动条位置的记录
+```
+
+![](https://s3.bmp.ovh/imgs/2022/08/03/dfe6df584d738849.png)
+
+```
+
+```
+
+
+
 # TypeScript
 
 ## 类型声明
