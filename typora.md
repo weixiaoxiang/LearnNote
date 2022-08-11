@@ -1693,6 +1693,34 @@ Cesium只支持WCS84和墨卡托投影；
 当影像数据为WCS84时，需要手动申明该ImageryProvider的TilingScheme=new Cesium.GeographicTilingScheme()
 ```
 
+## 加载B3DM优化建议
+
+```js
+// 原文：https://blog.csdn.net/weixin_42539678/article/details/122683572
+var tileset = new Cesium.Cesium3DTileset({
+        url:url,
+        skipLevelOfDetail: true,
+        baseScreenSpaceError: 1024,
+        maximumScreenSpaceError: 256, // 数值加大，能让最终成像变模糊
+        skipScreenSpaceErrorFactor: 16,
+        skipLevels: 1,
+        immediatelyLoadDesiredLevelOfDetail: false,
+        loadSiblings: true, // 如果为true则不会在已加载完概况房屋后，自动从中心开始超清化房屋
+        cullWithChildrenBounds: true,
+        cullRequestsWhileMoving: true,
+        cullRequestsWhileMovingMultiplier: 10, // 值越小能够更快的剔除
+        preloadWhenHidden: true,
+        preferLeaves: true,
+        maximumMemoryUsage: 128, // 内存分配变小有利于倾斜摄影数据回收，提升性能体验
+        progressiveResolutionHeightFraction: 0.5, // 数值偏于0能够让初始加载变得模糊
+        dynamicScreenSpaceErrorDensity: 0.5, // 数值加大，能让周边加载变快
+        dynamicScreenSpaceErrorFactor: 1, // 不知道起了什么作用没，反正放着吧先
+        dynamicScreenSpaceError: true, // 根据测试，有了这个后，会在真正的全屏加载完之后才清晰化房屋
+})
+```
+
+
+
 ## 主要类及方法总结
 
 ```js
