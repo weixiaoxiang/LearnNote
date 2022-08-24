@@ -1789,6 +1789,8 @@ js:
    Wall 构造二维墙体
 39.Cesium.HeightReference 设置相对于地形的位置
 40.viewer.dataSources.raise(dataSource) 将 dataSource的显示z-index上升一位 
+41.Cesium.Camera.·· = Cesium.Rectangle.fromDegrees(73.0, 3.0, 135.0, 53.0);//设置Home位置
+   viewer.camera.flyHome(5);
 ```
 
 ## flyto
