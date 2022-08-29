@@ -1879,6 +1879,18 @@ Cesium.sampleTerrain(terrainProvider, level, positions);
 
 # 软知识
 
+## 传参
+
+```js
+// request payload
+'content-type': 'application/json; charset=utf-8'
+
+//form data
+'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+```
+
+
+
 ## 插件和 SDK 的区别
 
 ```js
