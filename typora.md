@@ -17,7 +17,7 @@ _斜体_
 
 1. 哈
 2. 哈哈
-3. 安抚哈佛
+3. 安抚哈佛哈
 
 ```js
 // 代码段
@@ -215,14 +215,13 @@ h2{
 h2{
     white-space//处理空白的样式
     white-space:nowarp//规定文本不换行
-
 }
 //注意：弹性盒场景下会失效
 文本溢出省略号：
 h2{
     overflow:hidden;
-    text-overflow:ellipsis;//文本溢出省略号
-    white-space:nowrap;//控制不换行
+    text-overflow:ellipsis;
+    white-space:nowrap;
 }
 文本与图片对齐：
 img{
@@ -262,8 +261,6 @@ h3{
     aspect-ratio: 1;
 }
 ```
-
-
 
 ## 轮廓线
 
@@ -651,8 +648,8 @@ Date Math Array Error Reg
 - unshift() 在数组前面添加元素
 - slice(start,opt_end) 返回新数组，并且不会改变原数组,opt_end 可以为负值
 - splice(index,opt_length，opt_new) 返回新数组，并且修改原数组，opt_new 作为第三个参数时可以向原数组添加元素
--
--
+- 
+- 
 
 ## 清空数组
 
@@ -724,8 +721,6 @@ let per = {
   //age,18
 
 ```
-
-
 
 ## slice、substring、substr
 
@@ -824,10 +819,9 @@ defer; //也允许异步加载script文件
   writeable:true//是否可以修改`
   }
   ```
-
 - delete obj.name 删除对象 name 属性
 - Object.hasOwnProperty() 判断对象是否包含特定的自身（非继承）属性
--
+- 
 
 ## 探索 js 中函数的秘密
 
@@ -852,7 +846,7 @@ defer; //也允许异步加载script文件
 
 ## 堆栈内存概念
 
-![](https://s3.bmp.ovh/imgs/2022/06/06/133fc2da11344f4f.png)
+![](C:\Users\19353\Pictures\Camera Roll\133fc2da11344f4f.png)
 
 - 基本(原始)类型存在栈内存中，栈 stack 为自动分配的内存空间，它由系统自动释放；
 - 引用类型存在堆内存中， 堆 heap 是动态分配的内存，大小不定也不会自动释放。
@@ -905,7 +899,6 @@ Vue.js构建的应用程序，默认情况下是有一个html模板页，然后�
   //让Admin的原型指向User的实例，实现Admin继承User
   Admin.prototype = new User();
   ```
-
 - ==原型链==
 
   ```js
@@ -916,9 +909,7 @@ Vue.js构建的应用程序，默认情况下是有一个html模板页，然后�
 
 
 
-## 类class
-
-​```js
+//类class
 class Cat{
 
     constructor(name.age){
@@ -1018,14 +1009,12 @@ cancel() {
 async fn(){
     await this.cancel()
     console.log(2)
-}    
+}  
 打印结果：先1后2，同步执行异步函数
 
 
 
 ```
-
-
 
 ## 其他
 
@@ -1038,8 +1027,6 @@ async fn(){
 ```
 
 ```
-
-
 
 # TypeScript
 
@@ -1603,8 +1590,6 @@ data(){
 
 ```
 
-
-
 # uniapp 学习
 
 ```js
@@ -1719,8 +1704,6 @@ var tileset = new Cesium.Cesium3DTileset({
 })
 ```
 
-
-
 ## 主要类及方法总结
 
 ```js
@@ -1791,6 +1774,19 @@ js:
 40.viewer.dataSources.raise(dataSource) 将 dataSource的显示z-index上升一位 
 41.Cesium.Camera.·· = Cesium.Rectangle.fromDegrees(73.0, 3.0, 135.0, 53.0);//设置Home位置
    viewer.camera.flyHome(5);
+42.Cesium内置了拦截数据相应的方法：如下监听了时钟速率发现变化的事件
+  Cesium.knockout
+      .getObservable(viewer.clockViewModel, "multiplier")
+      .subscribe(function (newValue) {
+        console.log(newValue,110);
+      });
+43.FXAA和MSAA
+   FXAA:只是一个后处理技术，对原图绘制完成后，通过算法识别边缘，然后以像素级别进行混合；
+   MSAA:MSAA中每个像素点有4个子采样点，每个三角形对每个像素点只在中心点着色1次，再把计算结果根据深度和覆盖信息保存到对应的子采         样点，最后对4个采样点取均值作为最终的像素颜色
+44.后处理中PostProcessStageCollection和PostProcessStage、PostProcessStageComposite、PostProcessStageLibrary的关系：
+  PostProcessStageCollection最大，是PostProcessStage或者PostProcessStageComposite的集合， viewer.scene.postProcessStages.add()将后处理应用至场景中；
+  PostProcessStageComposite是多个PostProcessStage的集合，在执行逻辑上是同时进行的；
+  PostProcessStageLibrary是用于创建通用的PostProcessStage的函数，即事先cesium定义好了的PostProcessStage,不需要自定义   fragmentshader；
 ```
 
 ## flyto
@@ -1852,6 +1848,8 @@ Cesium.sampleTerrain(terrainProvider, level, positions);
 
 ![](https://s3.bmp.ovh/imgs/2022/06/06/22dc8cb77e421385.png)
 
+# Python
+
 # GIT 基本使用
 
 ## 解决冲突
@@ -1889,8 +1887,6 @@ Cesium.sampleTerrain(terrainProvider, level, positions);
 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
 ```
 
-
-
 ## 插件和 SDK 的区别
 
 ```js
@@ -1906,6 +1902,7 @@ SDK：也是基于cesium做的维持开发，但最终项目包括了自己开�
 1.popmotion.js  取代锚点定位的好工具，滚动到指定区域。
 2.https://shields.io/category/social 获得github项目实时的星星数
 3.vxe-table 强大的vue 表格插件
-
+4.npm install coordtransform 一个提供了百度坐标（BD09）、国测局坐标（火星坐标，GCJ02）、和WGS84坐标系之间的转换的工具模块
+5.npm install vue-quill-editor --save  vue富文本编辑器的使用
 
 ```
