@@ -1791,6 +1791,12 @@ js:
 40.viewer.dataSources.raise(dataSource) 将 dataSource的显示z-index上升一位 
 41.Cesium.Camera.·· = Cesium.Rectangle.fromDegrees(73.0, 3.0, 135.0, 53.0);//设置Home位置
    viewer.camera.flyHome(5);
+42.Cesium内置了拦截数据相应的方法：如下监听了时钟速率发现变化的事件
+  Cesium.knockout
+      .getObservable(viewer.clockViewModel, "multiplier")
+      .subscribe(function (newValue) {
+        console.log(newValue,110);
+      });
 ```
 
 ## flyto
@@ -1851,6 +1857,10 @@ Cesium.sampleTerrain(terrainProvider, level, positions);
 ## 基本绘制步骤
 
 ![](https://s3.bmp.ovh/imgs/2022/06/06/22dc8cb77e421385.png)
+
+# Python
+
+
 
 # GIT 基本使用
 
