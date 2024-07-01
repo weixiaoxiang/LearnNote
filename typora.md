@@ -1,4 +1,4 @@
-`<u>` 下划线 `</u>`
+`z<u>` 下划线 `</u>`
 
 # 一级标题
 
@@ -108,17 +108,29 @@ h1[title~='w']{
 ## 结构伪类选择器
 
 ```js
-h1:last-child{}
-h1:first-child{}
-h1:nth-child{}
-h1:nth-last-child{}
-h1:nth-of-type{}
-//匹配的元素的父元素中仅有一个子元素，而且是一个唯一的子元素。
-h1:only-child{}
-//用来选择一个元素是它的父元素的唯一一个相同类型的子元素
-h1:only-of-type{}
-//排除选择器（:not） ： 在前三个元素中排除掉第一个元素，选中剩余两个元素
-h1:nth-child(-n+3):not(:first-child){}
+//选中有title属性的元素
+h1[title]{
+}
+//选中title=‘wxx’的元素
+h1[title='wxx']{
+}
+//通配符选中title含有‘w’的元素
+h1[title*='w']{
+}
+//通配符选中title以‘w’开始的元素
+h1[title~='w']{
+}//选中有title属性的元素
+h1[title]{
+}
+//选中title=‘wxx’的元素
+h1[title='wxx']{
+}
+//通配符选中title含有‘w’的元素
+h1[title*='w']{
+}
+//通配符选中title以‘w’开始的元素
+h1[title~='w']{
+}
 ```
 
 ## 排除选择器
@@ -193,6 +205,16 @@ h2:empty{
 
 ```
 
+## 文字镜像
+
+```js
+  span {
+            display: block;
+            -webkit-box-reflect: below 5px -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(0, 0, 0, 0)), to(rgba(255, 255, 255, 0.2)));
+            visibility: visible;
+        }
+```
+
 ## 文本线条
 
 ```js
@@ -242,13 +264,48 @@ h2{
 }
 ```
 
+## 背景模糊
+
+```js
+//背景固定，背景的宽高要和图片一致
+//在添加另外一个元素（即为滤镜），给它设透明度和模糊值
+//给背景和滤镜设置z-index:-1, 使用负值降低优先级,防止添加在模糊图片上的文字图片模糊
+// css 
+.box {
+    position: relative;
+    margin-bottom: 10px;
+    .inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: -1;
+    }
+    .inner {
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+    }
+  }
+  
+  // html
+  <div class="box">
+          <div class="inner"></div>
+          <div class="con1">
+          <!-- 内容...><-->
+          </div>
+  </div>
+```
+
+
+
 ## 字符间距与排序
 
 ```js
 h2{
     letter-spacing:20px;//控制字符间距
     word-spacing:30px;//控制每个单词间距
-    writing-mode:vertical-rl//文字从右到左排序
+    writing-mode:vertical-rl//文字从上到下竖直排序
 }
 ```
 
@@ -276,7 +333,7 @@ h2{
 
 ## 表格 table
 
-![](https://s3.bmp.ovh/imgs/2022/07/14/443be4a36cddc51d.png)
+![](images/443be4a36cddc51d.png)
 
 ```js
 // th的高度自适应(设置th的vertical-align)
@@ -307,6 +364,39 @@ css:
       vertical-align: middle;// 通过设置th的vertical-align,让th的文字垂直居中，自适应高度的变化
     }
 ```
+
+## el-table高度问题
+
+```js
+// 当f0含有多个子元素(f1、f11等)，子元素f1中有表格、分页，这样写表格的高度动态变化
+div.f0
+    div.f1
+       el-table
+       el-pagination
+    div.f11
+
+样式写法：
+.f0{
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+      .f1{
+          flex:1;
+          .el-table{
+              height:calc(100% - 50px);
+          }
+          .el-pagination{
+              height:50px;
+          }
+  	   }
+      .f11{
+          height:400px;
+      }
+}
+
+```
+
+
 
 ## 元素显隐
 
@@ -355,14 +445,14 @@ div{
 background-origin： border-box | padding-box | content-box | no-clip
 ```
 
-![](https://s3.bmp.ovh/imgs/2022/06/06/788a3728728c5fe6.png)
+![](images/788a3728728c5fe6.png)
 
 ```
 //用来将背景图片做适当的裁剪以适应实际需要。
 background-clip ： border-box | padding-box | content-box | no-clip
 ```
 
-![](https://s3.bmp.ovh/imgs/2022/06/06/fbe963988e11470e.png)
+![](images/fbe963988e11470e.png)
 
 ```js
 //背景裁切 ：背景在盒子中的显示范围
@@ -410,7 +500,7 @@ h2{
 
 ## 边框背景图片
 
-![](https://s3.bmp.ovh/imgs/2022/06/06/326350f9b0d59dd2.png)
+![](images/326350f9b0d59dd2.png)
 
 ```js
 h2{
@@ -599,6 +689,17 @@ https://qishaoxuan.github.io/css_tricks/smallFont/
 ```js
 // 新增标签
 ```
+
+## class获得父元素
+
+```js
+// :has伪元素
+:has(.custom-tree-node) {
+            background: #e6f5f3;
+ }
+```
+
+
 
 # **_javascript_**
 
@@ -800,6 +901,18 @@ console.log(Symbol.for(hd)); //weixiaoxiang
 
 ```
 
+## 数组去重
+
+```js
+ // 数组去重
+ noRepeat(arr) {
+      var newArr = [...new Set(arr)]; //利用了Set结构不能接收重复数据的特点
+      return newArr;
+ }
+```
+
+
+
 ## async 和 defer
 
 ```js
@@ -846,7 +959,7 @@ defer; //也允许异步加载script文件
 
 ## 堆栈内存概念
 
-![](C:\Users\19353\Pictures\Camera Roll\133fc2da11344f4f.png)
+![](images/133fc2da11344f4f-1689151645118.png)
 
 - 基本(原始)类型存在栈内存中，栈 stack 为自动分配的内存空间，它由系统自动释放；
 - 引用类型存在堆内存中， 堆 heap 是动态分配的内存，大小不定也不会自动释放。
@@ -878,7 +991,7 @@ Vue.js构建的应用程序，默认情况下是有一个html模板页，然后�
 
 - 当对 undefined、null 使用 tostring(),会报错
 
-![](https://s3.bmp.ovh/imgs/2022/06/06/a94e3e6fbfe48c05.png)
+![](images/a94e3e6fbfe48c05.png)
 
 ## 原型对象
 
@@ -945,7 +1058,7 @@ JavaScript是一门解释型语言，使用了JIT技术，使得运行速度得�
 //https://www.bilibili.com/video/BV1sN411974w?p=6
 ```
 
-![](https://s3.bmp.ovh/imgs/2022/06/06/9eee364153b5b4a5.png)
+![](images/9eee364153b5b4a5.png)
 
 ## lodashJS 库使用
 
@@ -989,6 +1102,18 @@ Object.defineProperty(obj,'age',{
 new Worker() 开辟出一个子线程，只能下载网络文件，不能读取本地文件
 ```
 
+## 可选链操作符(?.)、空值合并操作符(??)
+
+```js
+// gtDetail?.nominalVoltage
+解释：
+	gtDetail?.nominalVoltage：这部分代码使用了可选链操作符。如果 gtDetail 是 null 或 undefined，则表达式立即返回 undefined，否则返回 gtDetail.nominalVoltage 的值。
+// gtDetail?.nominalVoltage??""
+    ?? ""：这部分代码使用了空值合并操作符。如果 gtDetail?.nominalVoltage 的值是 null 或 undefined，则表达式返回空字符串（""），否则返回 gtDetail?.nominalVoltage 的值。
+    所以，整个表达式的意思是：如果 gtDetail 是 null 或 undefined，或者 gtDetail.nominalVoltage 是 null 或 undefined，则返回空字符串，否则返回 gtDetail.nominalVoltage 的值。
+
+```
+
 ## Promise
 
 ```js
@@ -1016,13 +1141,22 @@ async fn(){
 
 ```
 
+## 阻止默认事件触发
+
+```js
+// 阻止默认事件
+event.preventDefault()
+
+
+```
+
 ## 其他
 
 ```js
 1.history.scrollRestoration 取消浏览器对页面滚动条位置的记录
 ```
 
-![](https://s3.bmp.ovh/imgs/2022/08/03/dfe6df584d738849.png)
+![](images/dfe6df584d738849.png)
 
 ```
 
@@ -1204,6 +1338,15 @@ v - model.lazy; //懒\响应，当失去焦点时响应
 v - model.trim; //去除首尾空字串
 ```
 
+## sync父子间传值
+
+```js
+
+
+
+
+```
+
 ## v-on 修饰符
 
 ```js
@@ -1326,6 +1469,14 @@ beforeDestroy(){}  //销毁前
 destroyed(){}  //销毁时
 
 
+
+```
+
+## hook:beforeDestory
+
+```js
+//清理定时器
+this.$once('hook:beforeDestory',() => {})
 
 ```
 
@@ -1585,15 +1736,504 @@ data(){
 
 # vue3学习
 
+## ref、reactive
+
+```js
+let s = ref('')
+```
+
+## nextTick
+
+```js
+import {nextTick} from 'vue'
+```
+
+## defineProps
+
 ```js
 // 基于setup语法糖的常用语法
+// defineProps是vue3提供的方法，不需要引用，可以直接使用;props的数据都是只读的，子组件中不能修改
+let props = defineProps(['time','name'])
+```
+
+## defineEmits
+
+```js
+// defineEmits是vue3提供的方法，不需要引用,用于触发子组件的自定义事件，并在父组件中接收子组件的传递的数据
+let $emit = defineEmits(['faterEvent']);
+$emit('faterEvent',data)
+```
+
+## 计算函数computed
+
+```js
+import {computed} from 'vue'
+
+const name = computed(()=>{
+    return a + b;
+})
+```
+
+## 监视函数watch、watchEffect
+
+```js
+watch(sun,(nv,ov)=>{
+    
+},{deep:true,immediate:true})
+watch([sun,msg],(nv,ov)=>{
+    
+})
+//obj一个响应式对象
+watch(obj,(nv,ov)=>{
+    
+})
+//obj一个响应式对象的属性
+watch(()=>obj.name,(nv,ov)=>{
+    
+})
+//同时监视obj的name、msg属性
+watch([()=>obj.name,()=>obj.msg],(nv,ov)=>{
+    
+})
+
+// 监视obj对象中的job对象
+watch(obj.job,(nv,ov)=>{
+    
+},{deep:true})
+
+//watchEffect，注意变量的变化监听不能发生在if判断中，否则不生效
+watchEffect(()=>{
+    //这里面你用到了谁就监视谁，里面就发生回调
+    const x1 = sum.value
+    console.log('我调用了');
+})
+
 
 ```
 
-# uniapp 学习
+## 生命周期
 
 ```js
-// 类vue语法
+ * beforeCreate 和  created 这两个生命周期钩子就相当于 setup 所以，不需要这两个
+ * 
+ * beforeMount   ===>  onBeforeMount
+ * mounted       ===>  onMounted
+ * beforeUpdate  ===>  onBeforeUpdate
+ * updated       ===>  onUpdated
+ * beforedestroy ===>  onBeforeUnmount
+ * destroyed     ===>  onUnmounted
+ onActivated()
+ onDeactivated()
+```
+
+## keep-alive
+
+```js
+<router-view v-slot="{ Component }">
+   <transition name="el-fade-in" mode="out-in">
+     <keep-alive :include="组件名称">
+       <component :is="Component" />
+     </keep-alive>
+   </transition>
+</router-view>
+
+
+// 缓存组件中，必须定义命名
+defineOptions({
+  // 命名当前组件
+  name: "Zlcx"
+})
+
+
+
+```
+
+
+
+## 自定义hook函数
+
+```js
+// 相当于vue2中的mixin
+```
+
+## 路由
+
+```js
+import {useRouter,useRoute} from 'vue-router'
+```
+
+
+
+## 自定义组件事件
+
+```js
+//在vue3中 @click既会触发原生标签的事件，又会触发自定义组件的事件，与vue2中有差异 
+<h2 @click="handler"></h2>
+<event @click="handler"/>
+
+
+```
+
+## 全局事件总线
+
+```js
+mitt插件 : npm i mitt -s 
+import mitt from 'mitt'
+const $bus = mitt()
+export default $bus;
+// 触发
+$bus.emit('Car',data)
+// 绑定
+$bus.on('Car',()=>{
+    ...触发了
+})
+```
+
+## v-model
+
+```js
+// 实现父子组件数据双向绑定，相当于给子组件绑定了一个@update:name="handler"的事件，在子组件中使用$emit('update:name',data)修改父组件传递的name
+// 父组件中写法
+<child :name="name" @update:name="handler">
+    等价于
+<child v-model:name="name">
+    
+    
+    
+// 父组件 
+<Modal v-model:show="showModal" />
+// 子组件
+interface Props {
+  show: boolean
+ }
+const props = withDefaults(defineProps<Props>(), {
+  show: false
+})
+const emit = defineEmits<{
+  "update:show": [boolean]
+}>()
+const close = () => {
+  emit("update:show", false)
+}
+
+```
+
+## useAttrs
+
+```js
+// useAttrs获取自身组件身上的属性和事件,vue提供的方法，props接收的属性数据通过$attrs拿不到，说明props的优先级更高
+import {useAttrs} from 'vue'
+let $attrs = useAttrs()
+```
+
+## ref、$parent
+
+```js
+// ref获取真实的DOM节点和子组件实例VC
+// $parent:可以在子组件内部中获得父组件实例
+
+// 子组件的数据如果需要让父组件通过ref访问，就需要defineExpose对外暴露。通过$parent拿父组件数据，父组件也需要使用defineExpose对外暴露
+defineExpose({
+    money
+})
+```
+
+## defineExpose
+
+```js
+//defineExpose对外暴露。通过$parent拿父组件数据，父组件也需要使用defineExpose对外暴露
+defineExpose({
+    money
+})
+```
+
+
+
+## provide、inject
+
+```js
+// 通信方式provide(提供)，inject(注入)，实现隔代组件传递数据
+// 爷爷组件
+const data = ref('haha')
+provide('token',data)
+// 孙子组件,修改数据后爷爷中的数据也会直接改变
+const data = inject('token')
+data.value = 'heihei'
+
+// 注意provide和inject的申明必须放在script中的最外侧，不可以在函数内写
+
+```
+
+## pinia
+
+```js
+// 大菠萝，集中式管理状态容器，实现任意组件之间通信
+// 概念：states actions getters
+// 组合式api：
+```
+
+## 插槽
+
+```js
+// 默认插槽、具名插槽、作用于插槽
+```
+
+## 安装配置eslint
+
+```js
+// 安装eslint 
+npm i eslint -D
+// 按照流程安装后 ,生成.eslintrc.cjs文件，配置eslint
+npx eslint --init
+// 
+//安装vue3环境代码校验插件
+# 让所有与prettier规则存在冲突的Eslint rules失效，并使用prettier进行代码检查
+"eslint-config-prettier": "^8.6.0",
+"eslint-plugin-import": "^2.27.5",
+"eslint-plugin-node": "^11.1.0",
+# 运行更漂亮的Eslint，使prettier规则优先级更高，Eslint优先级低
+"eslint-plugin-prettier": "^4.2.1",
+# vue.js的Eslint插件（查找vue语法错误，发现错误指令，查找违规风格指南
+"eslint-plugin-vue": "^9.9.0",
+# 该解析器允许使用Eslint校验所有babel code
+"@babel/eslint-parser": "^7.19.1",
+// 安装指令
+pnpm install -D eslint-plugin-import eslint-plugin-vue eslint-plugin-node eslint-plugin-prettier eslint-config-prettier eslint-plugin-node @babel/eslint-parser
+// 修改.eslintrc.cjsp配置文件,全部复制替换即可
+module.exports = {
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
+    jest: true,
+  },
+  /* 指定如何解析语法 */
+  parser: 'vue-eslint-parser',
+  /** 优先级低于 parse 的语法解析配置 */
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    parser: '@typescript-eslint/parser',
+    jsxPragma: 'React',
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
+  /* 继承已有的规则 */
+  extends: [
+    'eslint:recommended',
+    'plugin:vue/vue3-essential',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
+  ],
+  plugins: ['vue', '@typescript-eslint'],
+  /*
+   * "off" 或 0    ==>  关闭规则
+   * "warn" 或 1   ==>  打开的规则作为警告（不影响代码执行）
+   * "error" 或 2  ==>  规则作为一个错误（代码不能执行，界面报错）
+   */
+  rules: {
+    // eslint（https://eslint.bootcss.com/docs/rules/）
+    'no-var': 'error', // 要求使用 let 或 const 而不是 var
+    'no-multiple-empty-lines': ['warn', { max: 1 }], // 不允许多个空行
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-unexpected-multiline': 'error', // 禁止空余的多行
+    'no-useless-escape': 'off', // 禁止不必要的转义字符
+
+    // typeScript (https://typescript-eslint.io/rules)
+    '@typescript-eslint/no-unused-vars': 'error', // 禁止定义未使用的变量
+    '@typescript-eslint/prefer-ts-expect-error': 'error', // 禁止使用 @ts-ignore
+    '@typescript-eslint/no-explicit-any': 'off', // 禁止使用 any 类型
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/no-namespace': 'off', // 禁止使用自定义 TypeScript 模块和命名空间。
+    '@typescript-eslint/semi': 'off',
+
+    // eslint-plugin-vue (https://eslint.vuejs.org/rules/)
+    'vue/multi-word-component-names': 'off', // 要求组件名称始终为 “-” 链接的单词
+    'vue/script-setup-uses-vars': 'error', // 防止<script setup>使用的变量<template>被标记为未使用
+    'vue/no-mutating-props': 'off', // 不允许组件 prop的改变
+    'vue/attribute-hyphenation': 'off', // 对模板中的自定义组件强制执行属性命名样式
+  },
+}
+
+
+//.eslintignore忽略文件
+dist
+node_modules
+
+// 最后在package.json新增两个命令
+"scripts": {
+    "lint": "eslint src",
+    "fix": "eslint src --fix",
+}
+```
+
+## 配置**prettier**
+
+```js
+// 安装依赖
+pnpm install -D eslint-plugin-prettier prettier eslint-config-prettier
+
+//.prettierrc.json添加规则
+{
+  "singleQuote": true,
+  "semi": false,
+  "bracketSpacing": true,
+  "htmlWhitespaceSensitivity": "ignore",
+  "endOfLine": "auto",
+  "trailingComma": "all",
+  "tabWidth": 2
+}
+
+//.prettierignore忽略文件
+/dist/*
+/html/*
+.local
+/node_modules/**
+**/*.svg
+**/*.sh
+/public/*
+
+```
+
+# Nodejs
+
+## fs
+
+```js
+// fs
+writeFile() // 异步写入
+writeFileSync() // 同步写入
+appendFile() // 追加写入
+createWriteStream() // 创建文件写入流
+readFile() // 读取文件
+readFileSync() // 读取文件
+createReadStrame() // 创建流式读取
+rename() // 重命名、移动文件
+unlink() // 删除文件
+rm() // 删除文件，也可以用来删除文件夹
+mkdir() // 创建文件夹，可以递归创建文件夹
+readdir() // 读取文件夹
+rmdir() // 删除文件夹,可以递归删除文件夹
+stat() // 查看文件的相关信息，包含文件大小、创建时间等等
+__dirname // 绝对路径，保存所在文件的所在目录的绝对路径
+__filename // 绝对路径，保存所在文件的绝对路径
+```
+
+```js
+// 相对路径
+./index.html
+index.html
+
+// 绝对路径
+__dirname
+/index.html
+```
+
+## path
+
+```js
+// path
+resolve(__dirname,'./index.html') // 拼接规范的绝对路径
+sep() // 获得不同系统下的分隔符
+parse() // 用于解析路径
+basename() // 获得路径的文件名
+dirname() // 获得路径的目录名
+```
+
+## http
+
+```js
+// 请求报文
+
+
+// 相应报文
+
+
+// IP
+本机回环地址 ： 127.0.0.1 ~ 127.255.255.254
+局域网IP(私网IP):
+   192.168.0.0 ~ 192.168.255.255
+   172.16.0.0 ~ 172.31.255.255
+   10.0.0.0 ~ 10.255.255.255
+广域网IP(公网IP)
+   除上述之外的所有IP
+```
+
+```js
+const http = require('http')
+// 创建服务对象
+http.createServer((request,response)=>{
+    response。statusCode = 200 // 设置相应状态码
+    response.setHeader('Server','Node.js') // 设置响应头
+    response.write('设置相应体')
+    response.end('Hello HTTP Server') // 设置响应体
+}) 
+// 开启9000端口
+http.listen(9000,()=>{
+    console.log('服务已经启动')
+})
+
+
+https协议默认端口是443，http协议的默认端口是80
+
+
+// 关闭被占用的端口程序
+先打开‘资源监视器’，在网络中找到对应端口的pid，根据pid在任务管理器中找到对应的程序进程，关闭即可
+
+
+```
+
+## url
+
+```js
+const url = require('url')
+url.parse(xxx) // 解析xxx
+```
+
+## Nodejs模块化
+
+```js
+模块内部的数据是私有的，好处：
+  1 防止命名冲突
+  2 高复用性
+  3 高维护性
+ 
+ 
+ 
+```
+
+
+
+
+
+
+
+
+
+
+
+# Electron
+
+```js
+// 主进程
+// 渲染进程
+```
+
+
+
+# uniapp 学习
+
+## 简单学习
+
+```js
+// 简单学习：类vue语法
+1.敲clog：可直接输出console.log()；敲clogv：可输出console.log(": " + );，并且出现双光标，方便把变量名称和值同时打印出来
+```
+
+```js
+
 ```
 
 # GIS 学习
@@ -1649,7 +2289,7 @@ var map = new ol.Map({
 
 如图：
 
-![](https://s3.bmp.ovh/imgs/2022/06/06/b0191367a918d128.png)
+![](images/b0191367a918d128.png)
 
 ```js
 当调用ol.Map()这个构造函数时，OpenLayers地图引擎会在内部创建一个视口容器（viewport container，一个css类名为ol-viewport的div DOM元素）
@@ -1664,9 +2304,41 @@ var map = new ol.Map({
     所以上面示例中用于充当叠置层的html元素都会被移到用于承载叠置层的div元素中。
 ```
 
-![img](https://s3.bmp.ovh/imgs/2022/06/06/f383289fac0bd217.png)
+![img](images/f383289fac0bd217.png)
+
+## ol学习
+
+```js
+1.style.Icon中设置anchor:[0.5,1]可以让定位图标的最底部对应实际坐标点，视觉效果更好。
+```
+
+## 天地图
+
+```js
+// 天地图影像
+https://t{0-7}.tianditu.gov.cn/DataServer?T=img_w&x={x}&y={y}&l={z}&tk=8232df3467e2da8a1ae909e65a695bfe
+// 天地图影像注记
+https://t{0-7}.tianditu.gov.cn/DataServer?T=cia_w&x={x}&y={y}&l={z}&tk=8232df3467e2da8a1ae909e65a695bfe
+// 天地图矢量
+https://t{0-7}.tianditu.gov.cn/DataServer?T=vec_w&x={x}&y={y}&l={z}&tk=8232df3467e2da8a1ae909e65a695bfe
+// 天地图矢量注记
+https://t{0-7}.tianditu.gov.cn/DataServer?T=vec_w&x={x}&y={y}&l={z}&tk=8232df3467e2da8a1ae909e65a695bfe
+```
+
+
 
 # cesium
+
+## 本地化部署
+
+```js
+//  下载最新代码
+// npm install 
+// npm run build
+// npm run build-docs
+```
+
+
 
 ## 投影支持
 
@@ -1682,6 +2354,44 @@ Cesium只支持WCS84和墨卡托投影；
 
 ```js
 // 原文：https://blog.csdn.net/weixin_42539678/article/details/122683572
+var tileset = new Cesium.Cesium3DTileset({
+        url:url,
+        skipLevelOfDetail: true,
+        baseScreenSpaceError: 1024,
+        maximumScreenSpaceError: 256, // 数值加大，能让最终成像变模糊
+        skipScreenSpaceErrorFactor: 16,
+        skipLevels: 1,
+        immediatelyLoadDesiredLevelOfDetail: false,
+        loadSiblings: true, // 如果为true则不会在已加载完概况房屋后，自动从中心开始超清化房屋
+        cullWithChildrenBounds: true,
+        cullRequestsWhileMoving: true,
+        cullRequestsWhileMovingMultiplier: 10, // 值越小能够更快的剔除
+        preloadWhenHidden: true,
+        preferLeaves: true,
+        maximumMemoryUsage: 128, // 内存分配变小有利于倾斜摄影数据回收，提升性能体验
+        progressiveResolutionHeightFraction: 0.5, // 数值偏于0能够让初始加载变得模糊
+        dynamicScreenSpaceErrorDensity: 0.5, // 数值加大，能让周边加载变快
+        dynamicScreenSpaceErrorFactor: 1, // 不知道起了什么作用没，反正放着吧先
+        dynamicScreenSpaceError: true, // 根据测试，有了这个后，会在真正的全屏加载完之后才清晰化房屋
+})var tileset = new Cesium.Cesium3DTileset({
+        url:url,
+        skipLevelOfDetail: true,
+        baseScreenSpaceError: 1024,
+        maximumScreenSpaceError: 256, // 数值加大，能让最终成像变模糊
+        skipScreenSpaceErrorFactor: 16,
+        skipLevels: 1,
+        immediatelyLoadDesiredLevelOfDetail: false,
+        loadSiblings: true, // 如果为true则不会在已加载完概况房屋后，自动从中心开始超清化房屋
+        cullWithChildrenBounds: true,
+        cullRequestsWhileMoving: true,
+        cullRequestsWhileMovingMultiplier: 10, // 值越小能够更快的剔除
+        preloadWhenHidden: true,
+        preferLeaves: true,
+        maximumMemoryUsage: 128, // 内存分配变小有利于倾斜摄影数据回收，提升性能体验
+        progressiveResolutionHeightFraction: 0.5, // 数值偏于0能够让初始加载变得模糊
+        dynamicScreenSpaceErrorDensity: 0.5, // 数值加大，能让周边加载变快
+        dynamicScreenSpaceErrorFactor: 1, // 不知道起了什么作用没，反正放着吧先
+        dynamicScreenSpaceError: true, // 根据测试，有了这个后，会在真正的全屏加载完之后才清晰化房屋
 var tileset = new Cesium.Cesium3DTileset({
         url:url,
         skipLevelOfDetail: true,
@@ -1786,7 +2496,7 @@ js:
 44.后处理中PostProcessStageCollection和PostProcessStage、PostProcessStageComposite、PostProcessStageLibrary的关系：
   PostProcessStageCollection最大，是PostProcessStage或者PostProcessStageComposite的集合， viewer.scene.postProcessStages.add()将后处理应用至场景中；
   PostProcessStageComposite是多个PostProcessStage的集合，在执行逻辑上是同时进行的；
-  PostProcessStageLibrary是用于创建通用的PostProcessStage的函数，即事先cesium定义好了的PostProcessStage,不需要自定义   fragmentshader；
+  PostProcessStageLibrary是用于创建通用的PostProcessStage的函数，即事先cesium定义好了的PostProcessStage,不需要自定义fragmentshader；
 ```
 
 ## flyto
@@ -1806,7 +2516,7 @@ camera.flyto(xxx);
 clampToHeight(cartesian, objectsToExclude); //objectsToExclude 一般为实体或3DTiles
 ```
 
-## sampleTerrainMostDetailed、sampleTerrain
+## sampleTerrain
 
 ```js
 //在terrain数据集的最大可用图块级别上获得高程
@@ -1846,7 +2556,7 @@ Cesium.sampleTerrain(terrainProvider, level, positions);
 
 ## 基本绘制步骤
 
-![](https://s3.bmp.ovh/imgs/2022/06/06/22dc8cb77e421385.png)
+![](images/22dc8cb77e421385.png)
 
 # Python
 
@@ -1854,7 +2564,7 @@ Cesium.sampleTerrain(terrainProvider, level, positions);
 
 ## 解决冲突
 
-![](https://s3.bmp.ovh/imgs/2022/07/04/d54d73d7e596e1de.png)
+![](images/d54d73d7e596e1de.png)
 
 ```JS
 如上图：
@@ -1887,6 +2597,31 @@ Cesium.sampleTerrain(terrainProvider, level, positions);
 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
 ```
 
+## scss
+
+```js
+// 在calc中使用scss变量时 #{变量}
+width: calc(#{$base-width} - 80px);
+```
+
+## 局域网IP配置
+
+```js
+// IP地址：192.168.1.3
+// 子网掩码：255.255.255.0
+// 默认网关 192.168.1.1
+
+
+
+// 首选DNS服务器：114.114.114.114
+// 备用DNS服务器：114.114.115.115
+
+
+
+```
+
+
+
 ## 插件和 SDK 的区别
 
 ```js
@@ -1904,5 +2639,19 @@ SDK：也是基于cesium做的维持开发，但最终项目包括了自己开�
 3.vxe-table 强大的vue 表格插件
 4.npm install coordtransform 一个提供了百度坐标（BD09）、国测局坐标（火星坐标，GCJ02）、和WGS84坐标系之间的转换的工具模块
 5.npm install vue-quill-editor --save  vue富文本编辑器的使用
-
+  quill-image-resize-module  支持图片扩展
+6.vue-drag-resize  可对元素鼠标拖拽和拉升缩放
+7.shpjs  npm包，解析shp，使用时注意控制台的错误，可在github上找到解决方案
+8.crypto-js加密解密
+9.Chalk 为终端添加样式
+10.AbortController可以终止axios得到请求
+11.nodemon electron热加载
+12.npm install --save vue-js-modal  添加vue2中的弹出框
+13.npm install portal-vue@2.1.7   类似vue3的teleport ，可以将自定义组件传输到任意节点中
+14.picsum获得随机图片，常用于测试使用    https://picsum.photos/200/200  得到宽高200px的随机图片
+15.nativefier可以快速将网站打包成桌面程序  https://github.com/nativefier/nativefier
+16.sharp高性能nodejs图片处理工具
+17.npm i vue3-pdf-app vue3中pdf预览
+18.npm install --save @panzoom/panzoom  对图片、视频等任意元素进行缩放、拖拽
+19.富文本编辑器wangeditor    网址：https://www.wangeditor.com/v5/
 ```
