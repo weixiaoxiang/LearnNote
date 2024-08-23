@@ -584,7 +584,7 @@ h2{
 }
 ```
 
-## 弹性布局
+## 弹性布局flex
 
 ```js
 //弹性盒子为块级元素
@@ -623,6 +623,24 @@ h3{
 }
 
 ```
+
+## Grid布局
+
+```js
+
+
+.con{
+     display: grid;
+     grid-template-columns:1fr 1fr 2fr 200px;// 默认4个子盒子一排，对应数值宽度
+     grid-template-columns: repeat(4, 1fr);// 默认4个子盒子一排，宽度自动占满
+     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); // 响应式布局，子盒子最小宽度200px
+     gap: 20px; // 设置间隔20px,类似margin:10px
+}
+
+
+```
+
+
 
 ## 滤镜
 
