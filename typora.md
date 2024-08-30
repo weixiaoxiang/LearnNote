@@ -2620,6 +2620,12 @@ Cesium.sampleTerrain(terrainProvider, level, positions);
 ```js
 // 在calc中使用scss变量时 #{变量}
 width: calc(#{$base-width} - 80px);
+            
+// 在webpack中使用，需要额外安装sass-loader         
+sass  sass-loader
+node-sass sass-loader
+            
+// vite中默认集成了对sass支持，因此只需要安装sass就行，不需要安装sass-loader
 ```
 
 ## 局域网IP配置
